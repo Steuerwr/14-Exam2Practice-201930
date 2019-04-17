@@ -42,7 +42,7 @@ def main():
 
     # run_test_init()
     run_test_append_string()
-    # run_test_double()
+    run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -142,7 +142,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # TOD: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -167,8 +167,14 @@ class Box(object):
 
         if (len(self.contents) + len(additional_contents)) > self.volume:
             x = (len(self.contents) + len(additional_contents)) - self.volume
+            s = additional_contents[x-1]
+            for k in range(x, len(additional_contents)):
+                s = s + additional_contents[k]
+            for k in range(x - 1):
+                self.contents = self.contents + additional_contents[k]
 
         else:
+            self.contents = self.contents + additional_contents
             s = ''
         return s
 
@@ -218,6 +224,8 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
+        self.append_string(self.contents)
+        return ''
 
     def shrink(self, new_volume):
         """
